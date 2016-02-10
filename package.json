@@ -10,7 +10,7 @@
     "start": "node index.js"
   },
   "engines": {
-    "node 0.12.7"
+    "node": "0.12.7"
   },
   "dependencies": {
     "knex": "~0.5.7",
