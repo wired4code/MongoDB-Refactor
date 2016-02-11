@@ -13,7 +13,7 @@ var Link = require('../app/models/link');
 
 describe('', function() {
 
-  this.timeout(4000);
+  this.timeout(8000);
   beforeEach(function(done) {
     // Log out currently signed in user
     request(app)
