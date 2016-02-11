@@ -142,15 +142,15 @@ module.exports = function(grunt) {
 
   grunt.registerTask('heroku', ['shell:heroku']);
 
-  grunt.registerTask('heroku:production', ['deploy']);
+  grunt.registerTask('heroku:production', ['build', 'test']);
 
-  grunt.registerTask('upload', function(n) {
+  /*grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       grunt.task.run(['deploy']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
-  });
+  });*/
 
   grunt.registerTask('deploy', function(n) {
     if(grunt.option('prod')) {
