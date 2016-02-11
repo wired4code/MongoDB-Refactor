@@ -1,6 +1,7 @@
 var express = require('express');
 var partials = require('express-partials');
 var util = require('./lib/utility');
+var morgan = require('morgan');
 
  var handler = require('./lib/request-handler');
 
@@ -12,9 +13,9 @@ app.configure(function() {
     app.use(partials());
     app.use(express.bodyParser());
     app.use(express.static(__dirname + '/public'));
-    app.use(express.static(__dirname + '/dist'));
     app.use(express.cookieParser('shhhh, very secret'));
     app.use(express.session());
+    app.use(morgan('dev'));
 });
 
 app.get('/', util.checkUser, handler.renderIndex);
