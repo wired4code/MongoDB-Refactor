@@ -93,7 +93,8 @@ module.exports = function(grunt) {
     },
 
     shell: {
-      prodServer: {
+      heroku: {
+        command: 'git push heroku master'
       }
     },
   });
@@ -135,6 +136,10 @@ module.exports = function(grunt) {
     'uglify'
   ]);
 
+  grunt.registerTask('heroku', ['shell:heroku']);
+
+  grunt.registerTask('heroku:production', ['deploy']);
+
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       grunt.task.run(['deploy']);
@@ -143,10 +148,12 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [
-    'build', 'test'
-  ]);
-
-  grunt.registerTask('heroku:production', ['deploy']);
+  grunt.registerTask('deploy', function(n) {
+    if(grunt.option('prod')) {
+      grunt.task.run(['heroku']);
+    } else {
+      grunt.task.run([ 'build', 'test', 'server-dev' ]);
+    }
+  });
 
 };
