@@ -144,6 +144,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('heroku:production', ['build', 'test']);
 
+  grunt.registerTask('heroku:staging', ['build', 'test']);
+
   /*grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       grunt.task.run(['deploy']);
